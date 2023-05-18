@@ -4,6 +4,7 @@ using TMPro;
 
 public class CardLoader : MonoBehaviour
 {
+    [SerializeField] private GameDataConfig gameDataConfig;
     [SerializeField] private Card cardType;
     [SerializeField] private TMP_Text nameDisplay;
     [SerializeField] private Image image;
@@ -16,27 +17,27 @@ public class CardLoader : MonoBehaviour
     {
         nameDisplay.text = cardType.name;
         image.sprite = cardType.Image;
-        num = int.Parse(inputField.text);
+        inputField.text = gameDataConfig.getMaterialCard(cardType.ID).ToString();
     }
 
     public void ChangeValue(string stringValue)
     {
         int value = 0;
         int.TryParse(stringValue, System.Globalization.NumberStyles.Integer, null, out value);
-        if (value <= maxValue && value >= minValue)
+        if ((maxValue == 0 && value >= minValue) || (value <= maxValue && value >= minValue))
             num = value;
         else
         {
             num = Mathf.Clamp(value, minValue, maxValue);
             inputField.text = num.ToString();
         }
+        if (cardType.IsResource)
+            gameDataConfig.SaveMaterialCards(cardType.ID, num);
+        else
+            gameDataConfig.SaveProgressCards(cardType.ID, num);
     }
     public void PressButton(int amount)
     {
-        num += amount;
-        num = Mathf.Clamp(num, minValue, maxValue);
-        inputField.text = num.ToString();
-        Debug.Log(num);
+        inputField.text = (num + amount).ToString();
     }
-
 }

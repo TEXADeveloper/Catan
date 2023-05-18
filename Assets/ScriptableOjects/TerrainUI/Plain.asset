@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3ff24faa9fb5d4caae4d6bc542cc76, type: 3}
-  m_Name: Wool
+  m_Script: {fileID: 11500000, guid: abbce7288409a5d4388da952e675fa8c, type: 3}
+  m_Name: Plain
   m_EditorClassIdentifier: 
   ID: 4
-  Image: {fileID: 21300000, guid: d6c762927e9730c47886616dab525cce, type: 3}
-  Name: Wool
-  IsResource: 1
+  terrainName: Plain
+  UIImage: {fileID: 21300000, guid: 5665c8648224ba347b742ff60740903a, type: 3}

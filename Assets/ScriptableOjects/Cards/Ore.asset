@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ore
   m_EditorClassIdentifier: 
   ID: 3
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 61389c76b65ea7446830fc8f865a6f21, type: 3}
   Name: Ore
   IsResource: 1
