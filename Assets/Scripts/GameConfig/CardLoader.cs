@@ -17,7 +17,10 @@ public class CardLoader : MonoBehaviour
     {
         nameDisplay.text = cardType.name;
         image.sprite = cardType.Image;
-        inputField.text = gameDataConfig.getMaterialCard(cardType.ID).ToString();
+        if (cardType.IsResource)
+            inputField.text = gameDataConfig.getMaterialCard(cardType.ID).ToString();
+        else
+            inputField.text = gameDataConfig.getProgressCard(cardType.ID).ToString();
     }
 
     public void ChangeValue(string stringValue)

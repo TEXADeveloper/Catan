@@ -2,12 +2,38 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameDataConfig : MonoBehaviour
 {
+    [Header("General")]
+    [SerializeField] private GameData gameData;
+
+    public void StartGame()
+    {
+        copyArray(amountOfMaterials, ref gameData.AmountOfMaterials);
+        copyArray(amountOfProgress, ref gameData.AmountOfProgress);
+        copyArray(terrainData, ref gameData.TerrainOrder);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void copyArray(int[] origin, ref int[] destiny)
+    {
+        destiny = new int[origin.Length];
+        for (int i = 0; i < origin.Length; i++)
+            destiny[i] = origin[i];
+    }
+
+    private void copyArray(byte[] origin, ref byte[] destiny)
+    {
+        destiny = new byte[origin.Length];
+        for (int i = 0; i < origin.Length; i++)
+            destiny[i] = origin[i];
+    }
+
     [Header("Cards")]
-    private int[] amountOfMaterials = { 1, 2, 3, 4, 5 };
-    private int[] amountOfProgress = { 1, 2, 3 };
+    private int[] amountOfMaterials = { 19, 19, 19, 19, 19 };
+    private int[] amountOfProgress = { 14, 2, 2, 2, 5 }; //25 en total (14 caballeros, 6 progreso(2 de cada una), 5 puntos de victoria)
 
     public int getMaterialCard(int id) { return amountOfMaterials[id - 1]; }
 
@@ -62,6 +88,12 @@ public class GameDataConfig : MonoBehaviour
 
     public void RandomizeTerrainData()
     {
+        int total = 0;
+        for (int i = 0; i < terrainAmount.Length; i++)
+            total += terrainAmount[i];
+        if (total != TERRAIN_AMOUNT)
+            return;
+
         int index = 0;
         for (int i = 0; i < terrainAmount.Length; i++)
             for (int j = 0; j < terrainAmount[i]; j++)

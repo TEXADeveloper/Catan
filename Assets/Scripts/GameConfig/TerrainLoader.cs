@@ -41,10 +41,6 @@ public class TerrainLoader : MonoBehaviour
 
     public void RandomizeTerrain()
     {
-        int total = 0;
-        for (int i = 0; i < gameDataConfig.GetTerrainAmountArray().Length; i++)
-            total += gameDataConfig.GetTerrainAmount(i);
-        if (total == 19)
-            gameDataConfig.RandomizeTerrainData();
+        gameDataConfig.RandomizeTerrainData();
     }
 }

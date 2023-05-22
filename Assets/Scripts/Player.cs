@@ -8,5 +8,5 @@ public class Player
     public int[] resources;
     public int[] cards;
     public bool[] achievements;
-
+    public byte VictoryPoints;
 }
