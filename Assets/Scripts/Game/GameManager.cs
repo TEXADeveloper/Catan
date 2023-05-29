@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         worldGeneration.CreateTerrain(gameData.TerrainOrder);
-        cycle = StartCoroutine(gameCycle());
+        //cycle = StartCoroutine(gameCycle());
     }
 
     private IEnumerator gameCycle()

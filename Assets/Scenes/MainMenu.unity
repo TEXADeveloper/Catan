@@ -469,7 +469,6 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 9767d74fa976e6b44aea2c6df47ef530, type: 3}
   - {fileID: 919132149155446097, guid: fa35fc7e44117aa4c9ccfd512331995c, type: 3}
   - {fileID: 919132149155446097, guid: decc02d07ce2f0f44ab87d781ef0b66f, type: 3}
-  amount: 010000000400000003000000040000000300000004000000
 --- !u!4 &327055597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d79593fccbc280242bf03d7e01e10a9b,
