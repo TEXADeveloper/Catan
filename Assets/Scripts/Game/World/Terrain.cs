@@ -3,9 +3,17 @@ using UnityEngine;
 public class Terrain : MonoBehaviour
 {
     const float RADIUS = 11f;
+
+    public int Number;
+
     Town[] towns;
     City[] cities;
     Road[] roads;
+
+    public void SetNumber(int value)
+    {
+        Number = value;
+    }
 
     void Start()
     {

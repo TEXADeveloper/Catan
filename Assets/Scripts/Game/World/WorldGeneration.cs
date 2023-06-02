@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WorldGeneration : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class WorldGeneration : MonoBehaviour
     [SerializeField] private GameObject[] terrainTypes;
     private Terrain[] terrains;
 
+    [SerializeField] private LayerMask terrainLayer;
+    List<Terrain> externalTerrains = new List<Terrain>();
+    List<Terrain> internalTerrains = new List<Terrain>();
+    Terrain centerTerrain;
+
     public void CreateTerrain(byte[] terrainOrder)
     {
+        if (terrainOrder.Length == 0)
+            return;
         terrains = new Terrain[terrainOrder.Length];
         int index = 0;
         for (int y = 2; y >= -2; y--)
@@ -34,6 +42,7 @@ public class WorldGeneration : MonoBehaviour
                         index++;
                     }
         StartCoroutine(hideStructures());
+        initializeCircularLists();
     }
 
     private IEnumerator hideStructures()
@@ -65,5 +74,39 @@ public class WorldGeneration : MonoBehaviour
         spawnedBase.name = "Terrain " + type + " " + position;
 
         terrains[index] = spawnedBase.AddComponent<Terrain>();
+    }
+
+    private void initializeCircularLists()
+    {
+        centerTerrain = terrains[9];
+        Collider[] intCols = Physics.OverlapSphere(centerTerrain.transform.position, distance.x, terrainLayer);
+        foreach (Collider col in intCols)
+            internalTerrains.Add(col.GetComponent<Terrain>());
+
+        Collider[] extCols = Physics.OverlapSphere(centerTerrain.transform.position, distance.x * 2, terrainLayer);
+        foreach (Collider col in extCols)
+            externalTerrains.Add(col.GetComponent<Terrain>());
+
+        foreach (Terrain t in internalTerrains)
+            externalTerrains.Remove(t);
+        internalTerrains.Remove(centerTerrain);
+        externalTerrains.Remove(centerTerrain);
+        StartCoroutine(a());
+    }
+
+    private IEnumerator a()
+    {
+        yield return new WaitForSeconds(1f);
+        foreach (Terrain t in externalTerrains)
+        {
+            Destroy(t.gameObject);
+            yield return new WaitForSeconds(1f);
+        }
+        foreach (Terrain t in internalTerrains)
+        {
+            Destroy(t.gameObject);
+            yield return new WaitForSeconds(1f);
+        }
+        Destroy(centerTerrain.gameObject);
     }
 }

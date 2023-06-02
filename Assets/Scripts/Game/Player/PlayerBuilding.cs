@@ -12,6 +12,8 @@ public enum BuildingType
 public class PlayerBuilding : MonoBehaviour
 {
     Vector2 mousePos = Vector2.zero;
+    [SerializeField] private LayerMask terrainLayer;
+    [SerializeField] private float maxDistance;
     [SerializeField] private float tapThreshold;
     float timePressed = 0, timeReleased = 0;
     BuildingType type;
@@ -59,7 +61,7 @@ public class PlayerBuilding : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit hit;
         bool result = false;
-        if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Terrain"))
+        if (Physics.Raycast(ray, out hit, maxDistance, terrainLayer) && hit.collider.CompareTag("Terrain"))
             result = hit.collider.GetComponent<Terrain>().Build(type, hit.point);
         else
             type = BuildingType.none;

@@ -45,33 +45,42 @@ public class GameDataConfig : MonoBehaviour
 
 
     [Header("Terrain")]
-    const int TERRAIN_AMOUNT = 19;
-    private byte[] terrainData = new byte[TERRAIN_AMOUNT];
     [SerializeField] private byte[] defaultTerrainData = new byte[TERRAIN_AMOUNT];
     [SerializeField] private int[] defaultTerrainAmount = { 1, 3, 4, 3, 4, 4 };
     [SerializeField] private TerrainUI[] terrainTypes;
     [SerializeField] private Transform terrainOrderParent;
     [SerializeField] private TerrainLoader[] terrainLoaders;
+
+    private const int TERRAIN_AMOUNT = 19;
+    private byte[] terrainData = new byte[TERRAIN_AMOUNT];
+
     private Image[] terrainOrderMenu = new Image[TERRAIN_AMOUNT];
     private int[] terrainAmount = new int[6];
-    private int pos1 = -1, pos2 = -1;
+    private int tPos1 = -1, tPos2 = -1;
 
     void Awake()
     {
         fillTerrains();
         DefaultTerrainData();
+        DefaultNumberData();
     }
 
     private void fillTerrains()
     {
         for (int i = 0; i < terrainOrderParent.childCount; i++)
+        {
             terrainOrderMenu[i] = terrainOrderParent.GetChild(i).GetChild(0).GetComponent<Image>();
+            numberElements[i] = terrainNumberParent.GetChild(i).GetComponent<NumberConfigElement>();
+        }
     }
 
     private void displayTerrainData()
     {
         for (int i = 0; i < terrainOrderMenu.Length; i++)
+        {
             terrainOrderMenu[i].sprite = terrainTypes[terrainData[i]].UIImage;
+            numberElements[i].transform.GetChild(0).GetComponent<Image>().sprite = terrainTypes[terrainData[i]].UIImage;
+        }
     }
 
     public void DefaultTerrainData()
@@ -108,18 +117,18 @@ public class GameDataConfig : MonoBehaviour
 
     public void SelectTerrain(int pos)
     {
-        if (pos1 == -1)
-            pos1 = pos;
-        else if (pos2 == -1)
-            pos2 = pos;
-        if (pos1 != pos2 && (pos1 != -1) && (pos2 != -1))
+        if (tPos1 == -1)
+            tPos1 = pos;
+        else if (tPos2 == -1)
+            tPos2 = pos;
+        if (tPos1 != tPos2 && (tPos1 != -1) && (tPos2 != -1))
         {
-            changeTerrainOrder(pos1, pos2);
+            changeTerrainOrder(tPos1, tPos2);
             displayTerrainData();
-            cleanPositions();
+            cleanTerrainPositions();
         }
-        else if (pos1 == pos2)
-            cleanPositions();
+        else if (tPos1 == tPos2)
+            cleanTerrainPositions();
     }
 
     private void changeTerrainOrder(int i, int j)
@@ -129,10 +138,10 @@ public class GameDataConfig : MonoBehaviour
         terrainData[j] = tmp;
     }
 
-    private void cleanPositions()
+    private void cleanTerrainPositions()
     {
-        pos1 = -1;
-        pos2 = -1;
+        tPos1 = -1;
+        tPos2 = -1;
     }
 
     public int GetTerrainAmount(int pos)
@@ -155,5 +164,114 @@ public class GameDataConfig : MonoBehaviour
             terrainAmount[pos] = value;
         else
             terrainAmount[pos] = 19 - total;
+    }
+
+    [Header("Numbers")]
+    [SerializeField] private int[] defaultNumberOrder;
+    private int[] numberOrder;
+    [SerializeField] private Transform terrainNumberParent;
+    private NumberConfigElement[] numberElements = new NumberConfigElement[TERRAIN_AMOUNT];
+    private int numPos1 = -1, numPos2 = -1;
+    private int start;
+    private bool cleaned = false;
+
+    public void SetCleaned(bool value) => cleaned = value;
+
+    public void DefaultNumberData()
+    {
+        numberOrder = new int[defaultNumberOrder.Length];
+        for (int i = 0; i < numberOrder.Length; i++)
+            numberOrder[i] = defaultNumberOrder[i];
+        start = 0;
+        displayNumbers(start);
+    }
+
+    public void UpdateNumbers()
+    {
+        displayNumbers(start);
+    }
+
+    public void displayNumbers(int start) //! FIXME: Si cambia la cantidad de desiertos se va de rango;
+    {
+        int position = 0;
+        int index = start;
+        if (terrainData[index] != 0)
+            numberElements[index].SetText(numberOrder[position++], !cleaned);
+        else
+            numberElements[index].SetText(0, false);
+        while (numberElements[index].nextElement != start)
+        {
+            index = numberElements[index].nextElement;
+            if (terrainData[index] != 0)
+                numberElements[index].SetText(numberOrder[position++], !cleaned);
+            else
+                numberElements[index].SetText(0, false);
+        }
+
+        index = numberElements[index].internalElement;
+        start = index;
+        if (terrainData[index] != 0)
+            numberElements[index].SetText(numberOrder[position++], !cleaned);
+        else
+            numberElements[index].SetText(0, false);
+        while (numberElements[index].nextElement != start)
+        {
+            index = numberElements[index].nextElement;
+            if (terrainData[index] != 0)
+                numberElements[index].SetText(numberOrder[position++], !cleaned);
+            else
+                numberElements[index].SetText(0, false);
+        }
+        if (terrainData[9] != 0)
+            numberElements[9].SetText(numberOrder[position++], !cleaned);
+        else
+            numberElements[9].SetText(0, false);
+    }
+
+    public void SelectNumber(int pos) //! FIXME: YANO ANDA xD
+    {
+        if (cleaned)
+            return;
+        if (numPos1 == -1)
+            numPos1 = pos;
+        else if (numPos2 == -1)
+            numPos2 = pos;
+        if (numPos1 != numPos2 && (numPos1 != -1) && (numPos2 != -1))
+        {
+            changeNumberOrder(numPos1, numPos2);
+            displayNumbers(start);
+            cleanNumPositions();
+        }
+        else if (numPos1 == numPos2)
+            cleanNumPositions();
+    }
+
+    private void changeNumberOrder(int i, int j)
+    {
+        int tmp = numberOrder[i];
+        numberOrder[i] = numberOrder[j];
+        numberOrder[j] = tmp;
+    }
+
+    private void cleanNumPositions()
+    {
+        numPos1 = -1;
+        numPos2 = -1;
+    }
+
+    public void CleanNumbers()
+    {
+        SetCleaned(true);
+        start = 0;
+        DefaultNumberData();
+    }
+
+    public void SetNumberStart(int number)
+    {
+        if (number == -1 || !cleaned)
+            return;
+        SetCleaned(false);
+        start = number;
+        displayNumbers(start);
     }
 }

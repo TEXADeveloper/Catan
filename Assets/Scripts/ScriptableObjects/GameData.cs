@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "GameData")]
 public class GameData : ScriptableObject
@@ -10,4 +11,7 @@ public class GameData : ScriptableObject
     public byte[] TerrainOrder;
 
     public Player[] Players;
+
+    List<int> extIndex;
+    List<int> intIndex;
 }
