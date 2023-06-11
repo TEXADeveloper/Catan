@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        worldGeneration.CreateTerrain(gameData.TerrainOrder);
+        worldGeneration.CreateTerrain(gameData.TerrainOrder, gameData.TerrainNumbers);
         //cycle = StartCoroutine(gameCycle());
     }
 

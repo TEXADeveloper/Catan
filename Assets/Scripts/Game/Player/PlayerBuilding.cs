@@ -20,6 +20,8 @@ public class PlayerBuilding : MonoBehaviour
 
     Camera mainCamera;
 
+    int turn = 1;
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -62,10 +64,14 @@ public class PlayerBuilding : MonoBehaviour
         RaycastHit hit;
         bool result = false;
         if (Physics.Raycast(ray, out hit, maxDistance, terrainLayer) && hit.collider.CompareTag("Terrain"))
-            result = hit.collider.GetComponent<Terrain>().Build(type, hit.point);
+            result = hit.collider.GetComponent<Terrain>().Build(type, hit.point, turn);
         else
             type = BuildingType.none;
         if (result)
+        {
+            if (BuildingType.town == type)
+                turn++;
             type = BuildingType.none;
+        }
     }
 }

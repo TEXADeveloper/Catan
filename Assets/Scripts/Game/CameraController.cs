@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class CameraController : MonoBehaviour
 {
+    public static event Action MOVE_CAMERA;
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed;
     private Vector2 primaryPos = Vector2.zero;
@@ -30,6 +32,7 @@ public class CameraController : MonoBehaviour
         Vector3 rotation = transform.rotation.eulerAngles + new Vector3(-delta * rotationSpeed, 0f, 0f);
         rotation.x = Mathf.Clamp(rotation.x, 20, 90);
         transform.eulerAngles = rotation;
+        MOVE_CAMERA?.Invoke();
     }
 
     public void ReadPrimaryContact(InputAction.CallbackContext ctx)

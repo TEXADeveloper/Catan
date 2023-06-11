@@ -9,6 +9,7 @@ public class GameData : ScriptableObject
     public int[] AmountOfMaterials;
     public int[] AmountOfProgress;
     public byte[] TerrainOrder;
+    public byte[] TerrainNumbers;
 
     public Player[] Players;
 

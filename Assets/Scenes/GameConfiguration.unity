@@ -355,7 +355,7 @@ MonoBehaviour:
   - {fileID: 1745729944}
   - {fileID: 51785900}
   - {fileID: 1854837057}
-  defaultNumberOrder: 0a0000000c000000090000000800000005000000060000000b00000005000000080000000a0000000900000002000000060000000b00000003000000040000000300000004000000
+  defaultNumberOrder: 0a0c090805060b05080a0902060b03040304
   terrainNumberParent: {fileID: 591630960}
 --- !u!1 &55749797
 GameObject:
@@ -847,10 +847,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 179123645}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 17
           m_FloatArgument: 0
           m_StringArgument: 
@@ -880,6 +880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 18
   internalElement: 14
   text: {fileID: 1102826180}
@@ -1127,6 +1129,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 52356516}
+        m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
+        m_MethodName: UpdateNumbers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &216785478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,10 +1360,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 276610270}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1379,6 +1393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 13
   internalElement: 9
   text: {fileID: 528042556}
@@ -1921,10 +1937,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 344674229}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 15
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1954,6 +1970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 11
   internalElement: 10
   text: {fileID: 1084195748}
@@ -2749,10 +2767,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 497566145}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2782,6 +2800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 7
   internalElement: 8
   text: {fileID: 523231133}
@@ -4023,10 +4043,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 639977092}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4056,6 +4076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 8
   internalElement: 9
   text: {fileID: 498320863}
@@ -4418,10 +4440,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 684786510}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 16
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4451,6 +4473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 17
   internalElement: 13
   text: {fileID: 76766348}
@@ -4830,10 +4854,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 733752097}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4863,6 +4887,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 12
   internalElement: 8
   text: {fileID: 728055673}
@@ -4953,10 +4979,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 738257042}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4986,6 +5012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 4
   internalElement: 9
   text: {fileID: 1221492326}
@@ -5435,10 +5463,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 798576140}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5468,6 +5496,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 0
   internalElement: 4
   text: {fileID: 1830824764}
@@ -5509,7 +5539,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00005008, y: 1503.405}
+  m_AnchoredPosition: {x: -1.2369e-10, y: 0}
   m_SizeDelta: {x: 0, y: 2583.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &818877591
@@ -6511,10 +6541,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 931051800}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6544,6 +6574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 16
   internalElement: 13
   text: {fileID: 1441113571}
@@ -6634,10 +6666,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 935121290}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 14
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6667,6 +6699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 10
   internalElement: 9
   text: {fileID: 1425996435}
@@ -6886,10 +6920,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 948422871}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6919,6 +6953,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 6
   internalElement: 10
   text: {fileID: 1776004718}
@@ -7632,10 +7668,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1080576222}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7665,6 +7701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 2
   internalElement: 5
   text: {fileID: 1991765750}
@@ -8925,10 +8963,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1240128591}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8958,6 +8996,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 3
   internalElement: 4
   text: {fileID: 647710541}
@@ -9572,10 +9612,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1274941956}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 13
           m_FloatArgument: 0
           m_StringArgument: 
@@ -9605,6 +9645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 14
   internalElement: 9
   text: {fileID: 1267517208}
@@ -12185,10 +12227,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1725568478}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 18
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12218,6 +12260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 15
   internalElement: 14
   text: {fileID: 894706726}
@@ -12308,10 +12352,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1729407611}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12341,6 +12385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 5
   internalElement: 9
   text: {fileID: 1246952374}
@@ -14035,10 +14081,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2012394020}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 9
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14068,6 +14114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 9
   internalElement: 9
   text: {fileID: 1732977057}
@@ -14325,10 +14373,10 @@ MonoBehaviour:
       - m_Target: {fileID: 52356516}
         m_TargetAssemblyTypeName: GameDataConfig, Assembly-CSharp
         m_MethodName: SelectNumber
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2050317425}
+          m_ObjectArgumentAssemblyTypeName: NumberConfigElement, Assembly-CSharp
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14358,6 +14406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a257bf1eafcfd54c8be87c5772e62a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  number: 0
   nextElement: 1
   internalElement: 5
   text: {fileID: 1445352134}
@@ -14783,8 +14833,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1076424486}
   m_HandleRect: {fileID: 1076424485}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.41679603
+  m_Value: 1
+  m_Size: 0.41800672
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

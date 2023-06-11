@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 public class GameDataConfig : MonoBehaviour
 {
     [Header("General")]
+    #region general
     [SerializeField] private GameData gameData;
+    private int[] numbers;
 
     public void StartGame()
     {
         copyArray(amountOfMaterials, ref gameData.AmountOfMaterials);
         copyArray(amountOfProgress, ref gameData.AmountOfProgress);
         copyArray(terrainData, ref gameData.TerrainOrder);
+        copyArray(numberElements, ref gameData.TerrainNumbers);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -31,7 +34,17 @@ public class GameDataConfig : MonoBehaviour
             destiny[i] = origin[i];
     }
 
+    private void copyArray(NumberConfigElement[] origin, ref byte[] destiny)
+    {
+        destiny = new byte[origin.Length];
+        for (int i = 0; i < origin.Length; i++)
+            destiny[i] = origin[i].number;
+    }
+
+    #endregion
+
     [Header("Cards")]
+    #region cards
     private int[] amountOfMaterials = { 19, 19, 19, 19, 19 };
     private int[] amountOfProgress = { 14, 2, 2, 2, 5 }; //25 en total (14 caballeros, 6 progreso(2 de cada una), 5 puntos de victoria)
 
@@ -42,9 +55,10 @@ public class GameDataConfig : MonoBehaviour
     public int getProgressCard(int id) { return amountOfProgress[id - 1]; }
 
     public void SaveProgressCards(int id, int num) => amountOfProgress[id - 1] = num;
-
+    #endregion
 
     [Header("Terrain")]
+    #region terrain
     [SerializeField] private byte[] defaultTerrainData = new byte[TERRAIN_AMOUNT];
     [SerializeField] private int[] defaultTerrainAmount = { 1, 3, 4, 3, 4, 4 };
     [SerializeField] private TerrainUI[] terrainTypes;
@@ -113,6 +127,7 @@ public class GameDataConfig : MonoBehaviour
         System.Random random = new System.Random();
         terrainData = terrainData.OrderBy(x => random.Next()).ToArray();
         displayTerrainData();
+        displayNumbers(start);
     }
 
     public void SelectTerrain(int pos)
@@ -125,6 +140,7 @@ public class GameDataConfig : MonoBehaviour
         {
             changeTerrainOrder(tPos1, tPos2);
             displayTerrainData();
+            displayNumbers(start);
             cleanTerrainPositions();
         }
         else if (tPos1 == tPos2)
@@ -165,10 +181,12 @@ public class GameDataConfig : MonoBehaviour
         else
             terrainAmount[pos] = 19 - total;
     }
+    #endregion
 
     [Header("Numbers")]
-    [SerializeField] private int[] defaultNumberOrder;
-    private int[] numberOrder;
+    #region numbers
+    [SerializeField] private byte[] defaultNumberOrder;
+    private byte[] numberOrder;
     [SerializeField] private Transform terrainNumberParent;
     private NumberConfigElement[] numberElements = new NumberConfigElement[TERRAIN_AMOUNT];
     private int numPos1 = -1, numPos2 = -1;
@@ -179,7 +197,7 @@ public class GameDataConfig : MonoBehaviour
 
     public void DefaultNumberData()
     {
-        numberOrder = new int[defaultNumberOrder.Length];
+        numberOrder = new byte[defaultNumberOrder.Length];
         for (int i = 0; i < numberOrder.Length; i++)
             numberOrder[i] = defaultNumberOrder[i];
         start = 0;
@@ -191,51 +209,41 @@ public class GameDataConfig : MonoBehaviour
         displayNumbers(start);
     }
 
-    public void displayNumbers(int start) //! FIXME: Si cambia la cantidad de desiertos se va de rango;
+    public void displayNumbers(int start)
     {
         int position = 0;
         int index = start;
-        if (terrainData[index] != 0)
-            numberElements[index].SetText(numberOrder[position++], !cleaned);
-        else
-            numberElements[index].SetText(0, false);
+        numberElements[index].SetText((hideNumber(index)) ? (byte)0 : numberOrder[position++], position - 1);
         while (numberElements[index].nextElement != start)
         {
             index = numberElements[index].nextElement;
-            if (terrainData[index] != 0)
-                numberElements[index].SetText(numberOrder[position++], !cleaned);
-            else
-                numberElements[index].SetText(0, false);
+            numberElements[index].SetText((hideNumber(index)) ? (byte)0 : numberOrder[position++], position - 1);
         }
 
         index = numberElements[index].internalElement;
         start = index;
-        if (terrainData[index] != 0)
-            numberElements[index].SetText(numberOrder[position++], !cleaned);
-        else
-            numberElements[index].SetText(0, false);
+        numberElements[index].SetText((hideNumber(index)) ? (byte)0 : numberOrder[position++], position - 1);
         while (numberElements[index].nextElement != start)
         {
             index = numberElements[index].nextElement;
-            if (terrainData[index] != 0)
-                numberElements[index].SetText(numberOrder[position++], !cleaned);
-            else
-                numberElements[index].SetText(0, false);
+            numberElements[index].SetText((hideNumber(index)) ? (byte)0 : numberOrder[position++], position - 1);
         }
-        if (terrainData[9] != 0)
-            numberElements[9].SetText(numberOrder[position++], !cleaned);
-        else
-            numberElements[9].SetText(0, false);
+        numberElements[9].SetText((hideNumber(9)) ? (byte)0 : numberOrder[position++], position - 1);
     }
 
-    public void SelectNumber(int pos) //! FIXME: YANO ANDA xD
+    bool hideNumber(int i)
+    {
+        return cleaned || terrainData[i] == 0;
+    }
+
+    public void SelectNumber(NumberConfigElement element)
     {
         if (cleaned)
             return;
-        if (numPos1 == -1)
-            numPos1 = pos;
-        else if (numPos2 == -1)
-            numPos2 = pos;
+        if (numPos1 == -1 && element.position != -1)
+            numPos1 = element.position;
+        else if (numPos2 == -1 && element.position != -1)
+            numPos2 = element.position;
         if (numPos1 != numPos2 && (numPos1 != -1) && (numPos2 != -1))
         {
             changeNumberOrder(numPos1, numPos2);
@@ -248,7 +256,7 @@ public class GameDataConfig : MonoBehaviour
 
     private void changeNumberOrder(int i, int j)
     {
-        int tmp = numberOrder[i];
+        byte tmp = numberOrder[i];
         numberOrder[i] = numberOrder[j];
         numberOrder[j] = tmp;
     }
@@ -274,4 +282,5 @@ public class GameDataConfig : MonoBehaviour
         start = number;
         displayNumbers(start);
     }
+    #endregion
 }

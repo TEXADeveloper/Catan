@@ -8,14 +8,21 @@ public class WorldGeneration : MonoBehaviour
     [SerializeField] private Material terrainMaterial;
     [SerializeField] private GameObject terrainBase;
     [SerializeField] private GameObject[] terrainTypes;
+    [SerializeField] private Transform emptyTerrainsParent;
     private Terrain[] terrains;
+    private Terrain[] emptyTerrains;
 
     [SerializeField] private LayerMask terrainLayer;
     List<Terrain> externalTerrains = new List<Terrain>();
     List<Terrain> internalTerrains = new List<Terrain>();
     Terrain centerTerrain;
 
-    public void CreateTerrain(byte[] terrainOrder)
+    void Start()
+    {
+        emptyTerrains = emptyTerrainsParent.GetComponentsInChildren<Terrain>();
+    }
+
+    public void CreateTerrain(byte[] terrainOrder, byte[] terrainNumbers)
     {
         if (terrainOrder.Length == 0)
             return;
@@ -28,7 +35,7 @@ public class WorldGeneration : MonoBehaviour
                 for (int x = -n; x <= n; x++)
                 {
                     Vector2 position = new Vector2(x * distance.x, y * distance.y);
-                    instantiateTerrain(position, terrainOrder[index], index);
+                    instantiateTerrain(position, terrainOrder[index], terrainNumbers[index], index);
                     index++;
                 }
             }
@@ -38,7 +45,7 @@ public class WorldGeneration : MonoBehaviour
                     {
                         int n = (Mathf.Abs(x) > 1) ? sign(x) : 0;
                         Vector2 position = new Vector2(sign(x) * distance.x / 2 + n * distance.x, y * distance.y);
-                        instantiateTerrain(position, terrainOrder[index], index);
+                        instantiateTerrain(position, terrainOrder[index], terrainNumbers[index], index);
                         index++;
                     }
         StartCoroutine(hideStructures());
@@ -49,6 +56,8 @@ public class WorldGeneration : MonoBehaviour
     {
         yield return null;
         foreach (Terrain t in terrains)
+            t.HideBuildings();
+        foreach (Terrain t in emptyTerrains)
             t.HideBuildings();
     }
 
@@ -61,7 +70,7 @@ public class WorldGeneration : MonoBehaviour
         return 0;
     }
 
-    private void instantiateTerrain(Vector2 position, byte type, int index)
+    private void instantiateTerrain(Vector2 position, byte type, byte number, int index)
     {
         GameObject spawnedBase = GameObject.Instantiate(terrainBase, new Vector3(position.x, 0, position.y), Quaternion.Euler(-90, 0, 0));
         GameObject spawnedTerrain = GameObject.Instantiate(terrainTypes[type], new Vector3(position.x, 0, position.y), Quaternion.Euler(-90, 0, 0));
@@ -73,7 +82,8 @@ public class WorldGeneration : MonoBehaviour
         spawnedBase.transform.parent = this.transform;
         spawnedBase.name = "Terrain " + type + " " + position;
 
-        terrains[index] = spawnedBase.AddComponent<Terrain>();
+        terrains[index] = spawnedBase.GetComponent<Terrain>();
+        terrains[index].SetNumber(number);
     }
 
     private void initializeCircularLists()
@@ -91,22 +101,5 @@ public class WorldGeneration : MonoBehaviour
             externalTerrains.Remove(t);
         internalTerrains.Remove(centerTerrain);
         externalTerrains.Remove(centerTerrain);
-        StartCoroutine(a());
-    }
-
-    private IEnumerator a()
-    {
-        yield return new WaitForSeconds(1f);
-        foreach (Terrain t in externalTerrains)
-        {
-            Destroy(t.gameObject);
-            yield return new WaitForSeconds(1f);
-        }
-        foreach (Terrain t in internalTerrains)
-        {
-            Destroy(t.gameObject);
-            yield return new WaitForSeconds(1f);
-        }
-        Destroy(centerTerrain.gameObject);
     }
 }

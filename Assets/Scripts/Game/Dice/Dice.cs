@@ -1,6 +1,5 @@
 using UnityEngine;
 
-//TODO: SACAR PROBABILIDADES DE LOS DADOS
 public class Dice : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
