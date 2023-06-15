@@ -1,8 +1,11 @@
 using UnityEngine;
+using System;
 using TMPro;
 
 public class DiceManager : MonoBehaviour
 {
+    public static event Action<int> DiceResult;
+
     [SerializeField] private TMP_Text text;
     int[] dices = new int[2];
     int callCount = 0;
@@ -19,5 +22,6 @@ public class DiceManager : MonoBehaviour
     {
         callCount = 0;
         text.text = "Salió: " + (dices[0] + dices[1]);
+        DiceResult?.Invoke(dices[0] + dices[1]);
     }
 }

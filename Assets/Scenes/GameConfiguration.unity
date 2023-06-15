@@ -5549,6 +5549,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 422649856}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: b8661f21fabf22a4a88e18d737c82be8,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: b8661f21fabf22a4a88e18d737c82be8,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5675,7 +5692,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!224 &818877592 stripped
 RectTransform:
@@ -6109,6 +6127,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 422649856}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: c2f4a30bfdeeecf4fbfcc36d7393b296,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: c2f4a30bfdeeecf4fbfcc36d7393b296,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6235,7 +6270,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!224 &895629014 stripped
 RectTransform:
@@ -6250,6 +6286,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044808976}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 7faad3d56d3014442b570fb3112326d7,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 7faad3d56d3014442b570fb3112326d7,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6376,7 +6429,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!1 &919049081
 GameObject:
@@ -7236,6 +7290,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 422649856}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 714234f7afdfb6b499a023080ce6d956,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 714234f7afdfb6b499a023080ce6d956,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7362,7 +7433,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!224 &1047823688 stripped
 RectTransform:
@@ -7377,6 +7449,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044808976}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f31c28b4ec5364c8d110ed995c1a73,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f31c28b4ec5364c8d110ed995c1a73,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7503,7 +7592,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!1 &1076424484
 GameObject:
@@ -10504,6 +10594,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044808976}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 41e5af6557a499b4da92378653dc81ef,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 41e5af6557a499b4da92378653dc81ef,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -10630,7 +10737,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!1 &1441113569
 GameObject:
@@ -11476,6 +11584,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044808976}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 78164e96af0aa8b4899bdb6e25569837,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 78164e96af0aa8b4899bdb6e25569837,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -11602,7 +11727,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!1001 &1571498583
 PrefabInstance:
@@ -11611,6 +11737,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2044808976}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 14676d91452b0e048a2d61f72472f159,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 14676d91452b0e048a2d61f72472f159,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -11737,7 +11880,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!1001 &1580531828
 PrefabInstance:
@@ -12692,6 +12836,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 422649856}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 068563971684ade419eb51c8e469514f,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: 068563971684ade419eb51c8e469514f,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -12818,7 +12979,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!224 &1774698186 stripped
 RectTransform:
@@ -14854,6 +15016,23 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 422649856}
     m_Modifications:
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: b02a59bde22c9f047a13efe4faac4b5d,
+        type: 2}
+    - target: {fileID: 1677399910397493329, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: gameDataConfig
+      value: 
+      objectReference: {fileID: 52356516}
+    - target: {fileID: 1686572748775199638, guid: 52916f9757074904c8469ae44d7d8f91,
+        type: 3}
+      propertyPath: cardType
+      value: 
+      objectReference: {fileID: 11400000, guid: b02a59bde22c9f047a13efe4faac4b5d,
+        type: 2}
     - target: {fileID: 1790500140187060095, guid: 52916f9757074904c8469ae44d7d8f91,
         type: 3}
       propertyPath: m_Pivot.x
@@ -14980,7 +15159,8 @@ PrefabInstance:
       propertyPath: gameDataConfig
       value: 
       objectReference: {fileID: 52356516}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162880951051952331, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52916f9757074904c8469ae44d7d8f91, type: 3}
 --- !u!224 &7283850088306616799 stripped
 RectTransform:

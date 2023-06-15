@@ -293,8 +293,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8162880951051952331}
-        m_TargetAssemblyTypeName: CardLoader, Assembly-CSharp
+      - m_Target: {fileID: 1677399910397493329}
+        m_TargetAssemblyTypeName: CardConfig, Assembly-CSharp
         m_MethodName: ChangeValue
         m_Mode: 0
         m_Arguments:
@@ -580,8 +580,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8162880951051952331}
-        m_TargetAssemblyTypeName: CardLoader, Assembly-CSharp
+      - m_Target: {fileID: 1677399910397493329}
+        m_TargetAssemblyTypeName: CardConfig, Assembly-CSharp
         m_MethodName: PressButton
         m_Mode: 3
         m_Arguments:
@@ -603,7 +603,8 @@ GameObject:
   - component: {fileID: 1790500140187060095}
   - component: {fileID: 6075378331507662252}
   - component: {fileID: 902231176534534249}
-  - component: {fileID: 8162880951051952331}
+  - component: {fileID: 1677399910397493329}
+  - component: {fileID: 1686572748775199638}
   m_Layer: 5
   m_Name: CardUI
   m_TagString: Untagged
@@ -673,7 +674,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8162880951051952331
+--- !u!114 &1677399910397493329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -682,15 +683,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 6886608499680443541}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05f1e1c9336be3048849dd67adeff3d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f5fc25b757ccb84586f28df540fae13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDataConfig: {fileID: 0}
+  cardType: {fileID: 0}
+  nameDisplay: {fileID: 557942859101954413}
+  inputField: {fileID: 4766042696316837102}
+  minValue: 0
+  maxValue: 0
+--- !u!114 &1686572748775199638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6886608499680443541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c40dd6f85d34644685316944df9e547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardType: {fileID: 0}
-  nameDisplay: {fileID: 557942859101954413}
-  image: {fileID: 902231176534534249}
-  inputField: {fileID: 4766042696316837102}
-  minValue: 0
-  maxValue: 19
 --- !u!1 &7245748827118116282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,8 +1171,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8162880951051952331}
-        m_TargetAssemblyTypeName: CardLoader, Assembly-CSharp
+      - m_Target: {fileID: 1677399910397493329}
+        m_TargetAssemblyTypeName: CardConfig, Assembly-CSharp
         m_MethodName: PressButton
         m_Mode: 3
         m_Arguments:

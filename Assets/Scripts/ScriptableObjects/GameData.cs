@@ -13,6 +13,10 @@ public class GameData : ScriptableObject
 
     public Player[] Players;
 
-    List<int> extIndex;
-    List<int> intIndex;
+    public void InitializePlayer(int amount)
+    {
+        Players = new Player[amount];
+        for (int i = 0; i < amount; i++)
+            Players[i] = new Player();
+    }
 }

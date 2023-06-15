@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Town : MonoBehaviour, Building
+public class Town : MonoBehaviour
 {
+    public Player Owner;
     Terrain[] terrains = new Terrain[3];
     int i = 0;
 
@@ -12,7 +13,30 @@ public class Town : MonoBehaviour, Building
         i++;
     }
 
-    public Town[] GetNearestTowns()
+    public bool CanBePlaced(int turn)
+    {
+        Town[] nearestTowns = getNearestTowns();
+        for (int i = 0; i < nearestTowns.Length; i++)
+            if (nearestTowns[i].gameObject.activeSelf)
+                return false;
+
+        if (turn <= 2)
+            return true;
+
+        City[] nearestCities = getNearestCities();
+        for (int i = 0; i < nearestCities.Length; i++)
+            if (nearestCities[i].gameObject.activeSelf)
+                return false;
+
+        Road[] nearestRoads = getNearestRoads();
+        for (int i = 0; i < nearestRoads.Length; i++)
+            if (nearestRoads[i].gameObject.activeSelf)
+                return true;
+
+        return false;
+    }
+
+    private Town[] getNearestTowns()
     {
         Town[] tmp1 = terrains[0].FindNearestTownArray(transform.position, false);
         Town[] tmp2 = new Town[0];
@@ -34,7 +58,7 @@ public class Town : MonoBehaviour, Building
         return towns.ToArray();
     }
 
-    public City[] GetNearestCities()
+    private City[] getNearestCities()
     {
         City[] tmp1 = terrains[0].FindNearestCityArray(transform.position, false);
         City[] tmp2 = new City[0];
@@ -56,7 +80,7 @@ public class Town : MonoBehaviour, Building
         return cities.ToArray();
     }
 
-    public Road[] GetNearestRoads()
+    private Road[] getNearestRoads()
     {
         Road[] tmp1 = terrains[0].FindNearestRoadArray(transform.position, false);
         Road[] tmp2 = new Road[0];

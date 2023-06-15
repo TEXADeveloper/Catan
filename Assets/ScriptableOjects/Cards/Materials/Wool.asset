@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wool
   m_EditorClassIdentifier: 
   ID: 4
-  Image: {fileID: 21300000, guid: d6c762927e9730c47886616dab525cce, type: 3}
+  CardImage: {fileID: 21300000, guid: d6c762927e9730c47886616dab525cce, type: 3}
+  CardIcon: {fileID: 21300000, guid: bc67dc3a627e79d4a93a243f6c65c569, type: 3}
   Name: Wool
   IsResource: 1

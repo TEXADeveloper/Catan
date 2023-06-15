@@ -3,8 +3,11 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+
+
     [SerializeField] private GameData gameData;
     [SerializeField] private WorldGeneration worldGeneration;
+    [SerializeField] private Transform inventoryParent;
     private Coroutine cycle;
     private byte firstInRound;
     private byte phase;
@@ -12,6 +15,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         worldGeneration.CreateTerrain(gameData.TerrainOrder, gameData.TerrainNumbers);
+        gameData.InitializePlayer(1);
+        foreach (InventoryDisplay i in inventoryParent.GetComponentsInChildren<InventoryDisplay>())
+            i.SetPlayer(gameData.Players[0]);
+
         //cycle = StartCoroutine(gameCycle());
     }
 

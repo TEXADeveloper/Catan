@@ -11,6 +11,8 @@ public enum BuildingType
 
 public class PlayerBuilding : MonoBehaviour
 {
+    [SerializeField] private GameData gameData;
+
     Vector2 mousePos = Vector2.zero;
     [SerializeField] private LayerMask terrainLayer;
     [SerializeField] private float maxDistance;
@@ -64,7 +66,7 @@ public class PlayerBuilding : MonoBehaviour
         RaycastHit hit;
         bool result = false;
         if (Physics.Raycast(ray, out hit, maxDistance, terrainLayer) && hit.collider.CompareTag("Terrain"))
-            result = hit.collider.GetComponent<Terrain>().Build(type, hit.point, turn);
+            result = hit.collider.GetComponent<Terrain>().Build(type, hit.point, turn, gameData.Players[0]);
         else
             type = BuildingType.none;
         if (result)

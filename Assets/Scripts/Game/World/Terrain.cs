@@ -11,11 +11,17 @@ public class Terrain : MonoBehaviour
     [SerializeField] private LayerMask cityMask;
     [SerializeField] private LayerMask roadMask;
     [SerializeField] private bool isEmpty = false;
+    private byte type;
     private byte number;
 
     Town[] towns;
     City[] cities;
     Road[] roads;
+
+    public void SetType(byte value)
+    {
+        type = value;
+    }
 
     public void SetNumber(byte value)
     {
@@ -32,6 +38,9 @@ public class Terrain : MonoBehaviour
         setArray<Town>(townMask, ref towns, 30);
         setArray<City>(cityMask, ref cities, 30);
         setArray<Road>(roadMask, ref roads, 0);
+
+        if (!isEmpty)
+            DiceManager.DiceResult += diceResult;
     }
 
     private void setArray<T>(int mask, ref T[] array, float initialAngle)
@@ -68,99 +77,48 @@ public class Terrain : MonoBehaviour
         }
     }
 
-    public bool Build(BuildingType type, Vector3 pos, int turn)
+    public bool Build(BuildingType type, Vector3 pos, int turn, Player player)
     {
         switch (type)
         {
             case BuildingType.town:
-                return buildTowns(pos, turn);
+                return buildTowns(pos, turn, player);
             case BuildingType.city:
-                return buildCity(pos);
+                return buildCity(pos, player);
             case BuildingType.road:
-                return buildRoad(pos);
+                return buildRoad(pos, player);
         }
         return false;
     }
 
-    public bool buildTowns(Vector3 pos, int turn)
+    public bool buildTowns(Vector3 pos, int turn, Player player)
     {
         Town nearestTown = FindNearestTown(pos, false);
-        if (nearestTown.gameObject.activeSelf || !canPlaceTown(nearestTown, turn))
+        if (nearestTown.gameObject.activeSelf || !nearestTown.CanBePlaced(turn))
             return false;
         nearestTown.gameObject.SetActive(true);
+        nearestTown.Owner = player;
         return true;
     }
 
-    public bool buildCity(Vector3 pos)
+    public bool buildCity(Vector3 pos, Player player)
     {
         City nearestCity = FindNearestCity(pos, false);
-        if (nearestCity.gameObject.activeSelf || !canPlaceCity(nearestCity))
+        if (nearestCity.gameObject.activeSelf || !nearestCity.CanBePlaced(FindNearestTown(pos, false)))
             return false;
         nearestCity.gameObject.SetActive(true);
+        nearestCity.Owner = player;
         return true;
     }
 
-    public bool buildRoad(Vector3 pos)
+    public bool buildRoad(Vector3 pos, Player player)
     {
         Road nearestRoad = FindNearestRoad(pos, false);
-        if (nearestRoad.gameObject.activeSelf || !canPlaceRoad(nearestRoad))
+        if (nearestRoad.gameObject.activeSelf || !nearestRoad.CanBePlaced())
             return false;
         nearestRoad.gameObject.SetActive(true);
+        nearestRoad.Owner = player;
         return true;
-    }
-
-    private bool canPlaceTown(Town t, int turn)
-    {
-        Town[] nearestTowns = t.GetNearestTowns();
-        for (int i = 0; i < nearestTowns.Length; i++)
-            if (nearestTowns[i].gameObject.activeSelf)
-                return false;
-
-        if (turn <= 2)
-            return true;
-
-        City[] nearestCities = t.GetNearestCities();
-        for (int i = 0; i < nearestCities.Length; i++)
-            if (nearestCities[i].gameObject.activeSelf)
-                return false;
-
-        Road[] nearestRoads = t.GetNearestRoads();
-        for (int i = 0; i < nearestRoads.Length; i++)
-            if (nearestRoads[i].gameObject.activeSelf)
-                return true;
-
-        return false;
-    }
-
-    private bool canPlaceCity(City c)
-    {
-        Town t = FindNearestTown(c.transform.position, false);
-        if (t.gameObject.activeSelf)
-        {
-            t.gameObject.SetActive(false);
-            return true;
-        }
-        return false;
-    }
-
-    private bool canPlaceRoad(Road r)
-    {
-        Road[] nearestRoads = r.GetNearestRoads();
-        for (int i = 0; i < nearestRoads.Length; i++)
-            if (nearestRoads[i].gameObject.activeSelf)
-                return true;
-
-        Town[] nearestTowns = r.GetNearestTowns();
-        for (int i = 0; i < nearestTowns.Length; i++)
-            if (nearestTowns[i].gameObject.activeSelf)
-                return true;
-
-        City[] nearestCities = r.GetNearestCities();
-        for (int i = 0; i < nearestCities.Length; i++)
-            if (nearestCities[i].gameObject.activeSelf)
-                return true;
-
-        return false;
     }
 
     public City FindNearestCity(Vector3 pos, bool exclude)
@@ -320,5 +278,24 @@ public class Terrain : MonoBehaviour
         nearestRoads[0] = roads[(arrayPos + 1 >= roads.Length) ? 0 : arrayPos + 1];
         nearestRoads[1] = roads[(arrayPos - 1 < 0) ? roads.Length - 1 : arrayPos - 1];
         return nearestRoads;
+    }
+
+    private void diceResult(int value)
+    {
+        if (number == value)
+        {
+            foreach (Town t in towns)
+                if (t.gameObject.activeSelf)
+                    t.Owner.AddResources(type - 1, 1);
+            foreach (City c in cities)
+                if (c.gameObject.activeSelf)
+                    c.Owner.AddResources(type - 1, 2);
+        }
+    }
+
+    void OnDisable()
+    {
+        if (!isEmpty)
+            DiceManager.DiceResult -= diceResult;
     }
 }

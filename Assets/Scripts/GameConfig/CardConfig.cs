@@ -1,13 +1,11 @@
-using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class CardLoader : MonoBehaviour
+public class CardConfig : MonoBehaviour
 {
     [SerializeField] private GameDataConfig gameDataConfig;
     [SerializeField] private Card cardType;
     [SerializeField] private TMP_Text nameDisplay;
-    [SerializeField] private Image image;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField, Range(0, 19)] private int minValue;
     [SerializeField, Range(0, 19)] private int maxValue;
@@ -16,7 +14,6 @@ public class CardLoader : MonoBehaviour
     void Start()
     {
         nameDisplay.text = cardType.name;
-        image.sprite = cardType.Image;
         if (cardType.IsResource)
             inputField.text = gameDataConfig.getMaterialCard(cardType.ID).ToString();
         else

@@ -4,7 +4,8 @@ using UnityEngine;
 public class Card : ScriptableObject
 {
     public byte ID;
-    public Sprite Image;
+    public Sprite CardImage;
+    public Sprite CardIcon;
     public string Name;
     public bool IsResource = true;
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wheat
   m_EditorClassIdentifier: 
   ID: 5
-  Image: {fileID: 21300000, guid: af51f59f7c2b3684a9c9c5f4d32ac404, type: 3}
+  CardImage: {fileID: 21300000, guid: af51f59f7c2b3684a9c9c5f4d32ac404, type: 3}
+  CardIcon: {fileID: 21300000, guid: f164b1e302e463842867723f31b0ba8d, type: 3}
   Name: Wheat
   IsResource: 1

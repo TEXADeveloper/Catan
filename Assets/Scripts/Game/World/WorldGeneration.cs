@@ -83,6 +83,7 @@ public class WorldGeneration : MonoBehaviour
         spawnedBase.name = "Terrain " + type + " " + position;
 
         terrains[index] = spawnedBase.GetComponent<Terrain>();
+        terrains[index].SetType(type);
         terrains[index].SetNumber(number);
     }
 

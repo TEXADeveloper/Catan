@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Road : MonoBehaviour, Building
+public class Road : MonoBehaviour
 {
+    public Player Owner;
     Terrain[] terrains = new Terrain[3];
     int i = 0;
 
@@ -12,21 +13,39 @@ public class Road : MonoBehaviour, Building
         i++;
     }
 
-    public Town[] GetNearestTowns()
+    public bool CanBePlaced()
     {
-        //? Hay que obtener la mas cercana y la siguiente
+        Road[] nearestRoads = getNearestRoads();
+        for (int i = 0; i < nearestRoads.Length; i++)
+            if (nearestRoads[i].gameObject.activeSelf)
+                return true;
+
+        Town[] nearestTowns = getNearestTowns();
+        for (int i = 0; i < nearestTowns.Length; i++)
+            if (nearestTowns[i].gameObject.activeSelf)
+                return true;
+
+        City[] nearestCities = getNearestCities();
+        for (int i = 0; i < nearestCities.Length; i++)
+            if (nearestCities[i].gameObject.activeSelf)
+                return true;
+
+        return false;
+    }
+
+    private Town[] getNearestTowns()
+    {
         Town[] towns = terrains[0].FindNearestTownArray(transform.position, true);
         return towns;
     }
 
-    public City[] GetNearestCities()
+    private City[] getNearestCities()
     {
         City[] cities = terrains[0].FindNearestCityArray(transform.position, true); ;
         return cities;
     }
 
-    //TODO: implementar los terrenos invisibles a los lados;
-    public Road[] GetNearestRoads()
+    private Road[] getNearestRoads()
     {
         Road[] tmp1 = terrains[0].FindNearestRoadArray(transform.position, false);
         Road[] tmp2 = new Road[0];
