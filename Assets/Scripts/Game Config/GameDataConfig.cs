@@ -63,7 +63,7 @@ public class GameDataConfig : MonoBehaviour
     [SerializeField] private int[] defaultTerrainAmount = { 1, 3, 4, 3, 4, 4 };
     [SerializeField] private TerrainUI[] terrainTypes;
     [SerializeField] private Transform terrainOrderParent;
-    [SerializeField] private TerrainLoader[] terrainLoaders;
+    [SerializeField] private TerrainConfig[] terrainConfigs;
 
     private const int TERRAIN_AMOUNT = 19;
     private byte[] terrainData = new byte[TERRAIN_AMOUNT];
@@ -104,7 +104,7 @@ public class GameDataConfig : MonoBehaviour
         for (int i = 0; i < terrainAmount.Length; i++)
         {
             terrainAmount[i] = defaultTerrainAmount[i];
-            terrainLoaders[i].DisplayTerrainAmount(terrainAmount[i]);
+            terrainConfigs[i].DisplayTerrainAmount(terrainAmount[i]);
         }
         displayTerrainData();
     }

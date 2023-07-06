@@ -2,7 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class TerrainLoader : MonoBehaviour
+public class TerrainConfig : MonoBehaviour
 {
     [SerializeField] private GameDataConfig gameDataConfig;
     [SerializeField] private TerrainUI terrainType;

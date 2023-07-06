@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 3988032698265672005}
   - component: {fileID: 3988032698265671867}
   - component: {fileID: 3988032698265671866}
-  - component: {fileID: 8640995686271326604}
+  - component: {fileID: 5993997869079077141}
   m_Layer: 5
   m_Name: TerrainCard
   m_TagString: Untagged
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8640995686271326604
+--- !u!114 &5993997869079077141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3988032698265672004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f046e7f07d39c3d468558cb5021e6b8d, type: 3}
+  m_Script: {fileID: 11500000, guid: d8325726869b5d84694b635850aabcd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameDataConfig: {fileID: 0}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8640995686271326604}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TerrainLoader, Assembly-CSharp
         m_MethodName: PressButton
         m_Mode: 3
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8640995686271326604}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TerrainLoader, Assembly-CSharp
         m_MethodName: RandomizeTerrain
         m_Mode: 1
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8640995686271326604}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TerrainLoader, Assembly-CSharp
         m_MethodName: ChangeValue
         m_Mode: 0
@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8640995686271326604}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TerrainLoader, Assembly-CSharp
         m_MethodName: PressButton
         m_Mode: 3
