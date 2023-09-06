@@ -94,7 +94,7 @@ public class Terrain : MonoBehaviour
     public bool buildTowns(Vector3 pos, int turn, Player player)
     {
         Town nearestTown = FindNearestTown(pos, false);
-        if (nearestTown.gameObject.activeSelf || !nearestTown.CanBePlaced(turn))
+        if (nearestTown.gameObject.activeSelf || !nearestTown.CanBePlaced(turn, player))
             return false;
         nearestTown.gameObject.SetActive(true);
         nearestTown.Owner = player;
@@ -104,7 +104,7 @@ public class Terrain : MonoBehaviour
     public bool buildCity(Vector3 pos, Player player)
     {
         City nearestCity = FindNearestCity(pos, false);
-        if (nearestCity.gameObject.activeSelf || !nearestCity.CanBePlaced(FindNearestTown(pos, false)))
+        if (nearestCity.gameObject.activeSelf || !nearestCity.CanBePlaced(FindNearestTown(pos, false), player))
             return false;
         nearestCity.gameObject.SetActive(true);
         nearestCity.Owner = player;
@@ -114,7 +114,7 @@ public class Terrain : MonoBehaviour
     public bool buildRoad(Vector3 pos, Player player)
     {
         Road nearestRoad = FindNearestRoad(pos, false);
-        if (nearestRoad.gameObject.activeSelf || !nearestRoad.CanBePlaced())
+        if (nearestRoad.gameObject.activeSelf || !nearestRoad.CanBePlaced(player))
             return false;
         nearestRoad.gameObject.SetActive(true);
         nearestRoad.Owner = player;

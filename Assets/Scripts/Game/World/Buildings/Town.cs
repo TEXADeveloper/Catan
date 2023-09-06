@@ -4,6 +4,8 @@ using System.Collections.Generic;
 public class Town : MonoBehaviour
 {
     public Player Owner;
+    // clay, wood, ore, wool, wheat
+    int[] price = { 1, 1, 0, 1, 1 };
     Terrain[] terrains = new Terrain[3];
     int i = 0;
 
@@ -13,7 +15,7 @@ public class Town : MonoBehaviour
         i++;
     }
 
-    public bool CanBePlaced(int turn)
+    public bool CanBePlaced(int turn, Player p)
     {
         Town[] nearestTowns = getNearestTowns();
         for (int i = 0; i < nearestTowns.Length; i++)
@@ -23,6 +25,9 @@ public class Town : MonoBehaviour
         if (turn <= 2)
             return true;
 
+        if (!canPay(p))
+            return false;
+
         City[] nearestCities = getNearestCities();
         for (int i = 0; i < nearestCities.Length; i++)
             if (nearestCities[i].gameObject.activeSelf)
@@ -31,7 +36,10 @@ public class Town : MonoBehaviour
         Road[] nearestRoads = getNearestRoads();
         for (int i = 0; i < nearestRoads.Length; i++)
             if (nearestRoads[i].gameObject.activeSelf)
+            {
+                p.PayResources(price);
                 return true;
+            }
 
         return false;
     }
@@ -113,5 +121,18 @@ public class Town : MonoBehaviour
             }
         if (!repeated)
             list.Add(element);
+    }
+
+    private bool canPay(Player p)
+    {
+        bool canPay = true;
+        int i = 0;
+        while (i < price.Length && canPay)
+        {
+            canPay = p.GetResources(i) >= price[i];
+            i++;
+        }
+
+        return canPay;
     }
 }

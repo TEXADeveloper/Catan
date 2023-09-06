@@ -4,7 +4,7 @@ using TMPro;
 public class CardConfig : MonoBehaviour
 {
     [SerializeField] private GameDataConfig gameDataConfig;
-    [SerializeField] private Card cardType;
+    [SerializeField] private CardUI cardType;
     [SerializeField] private TMP_Text nameDisplay;
     [SerializeField] private TMP_InputField inputField;
     [SerializeField, Range(0, 19)] private int minValue;

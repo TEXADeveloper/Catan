@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -11,12 +9,14 @@ public class GameData : ScriptableObject
     public byte[] TerrainOrder;
     public byte[] TerrainNumbers;
 
-    public Player[] Players;
+    public List<Player> Players = new List<Player>();
 
-    public void InitializePlayer(int amount)
+    public void AddPlayer(Player p)
     {
-        Players = new Player[amount];
-        for (int i = 0; i < amount; i++)
-            Players[i] = new Player();
+        if (!Players.Contains(p))
+        {
+            p.ID = Players.Count;
+            Players.Add(p);
+        }
     }
 }

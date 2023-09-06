@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class CardDislplay : MonoBehaviour
 {
-    [SerializeField] private Card cardType;
+    [SerializeField] private CardUI cardType;
 
     void Start()
     {

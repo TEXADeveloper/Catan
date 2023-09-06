@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameData gameData;
     [SerializeField] private WorldGeneration worldGeneration;
-    [SerializeField] private Transform inventoryParent;
+    [SerializeField] private Transform resourcesParent;
+    [SerializeField] private Transform progressParent;
     private Coroutine cycle;
     private byte firstInRound;
     private byte phase;
@@ -15,8 +16,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         worldGeneration.CreateTerrain(gameData.TerrainOrder, gameData.TerrainNumbers);
-        gameData.InitializePlayer(1);
-        foreach (InventoryDisplay i in inventoryParent.GetComponentsInChildren<InventoryDisplay>())
+        gameData.AddPlayer(new Player());
+        foreach (ResourcesDisplay i in resourcesParent.GetComponentsInChildren<ResourcesDisplay>())
+            i.SetPlayer(gameData.Players[0]);
+        foreach (ProgressDisplay i in progressParent.GetComponentsInChildren<ProgressDisplay>())
             i.SetPlayer(gameData.Players[0]);
 
         //cycle = StartCoroutine(gameCycle());
@@ -31,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitUntil(() => Game(gameData.Players[i]));
             i++;
-            if (i >= gameData.Players.Length)
+            if (i >= gameData.Players.Count)
                 i = 0;
         }
         /**
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     private Player checkVictoryPoints()
     {
-        for (int i = 0; i < gameData.Players.Length; i++)
+        for (int i = 0; i < gameData.Players.Count; i++)
             if (gameData.Players[i].VictoryPoints >= 10)
                 return gameData.Players[i];
         return null;

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3ff24faa9fb5d4caae4d6bc542cc76, type: 3}
+  m_Script: {fileID: 11500000, guid: d294576275b7ee84d9535a41e54da635, type: 3}
   m_Name: Wool
   m_EditorClassIdentifier: 
   ID: 4

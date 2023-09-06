@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3ff24faa9fb5d4caae4d6bc542cc76, type: 3}
+  m_Script: {fileID: 11500000, guid: d294576275b7ee84d9535a41e54da635, type: 3}
   m_Name: Road
   m_EditorClassIdentifier: 
   ID: 2
-  Image: {fileID: 21300000, guid: 61389c76b65ea7446830fc8f865a6f21, type: 3}
+  CardImage: {fileID: 0}
+  CardIcon: {fileID: 0}
   Name: Road
   IsResource: 0
