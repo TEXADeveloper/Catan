@@ -98,6 +98,8 @@ public class Terrain : MonoBehaviour
             return false;
         nearestTown.gameObject.SetActive(true);
         nearestTown.Owner = player;
+        nearestTown.TurnObtained = turn;
+        player.AddVictoryPoints(1);
         return true;
     }
 
@@ -108,6 +110,7 @@ public class Terrain : MonoBehaviour
             return false;
         nearestCity.gameObject.SetActive(true);
         nearestCity.Owner = player;
+        player.AddVictoryPoints(1);
         return true;
     }
 
@@ -171,8 +174,6 @@ public class Terrain : MonoBehaviour
         nearestCities[0] = cities[(arrayPos + 1 >= cities.Length) ? 0 : arrayPos + 1];
         nearestCities[1] = cities[(arrayPos - 1 < 0) ? cities.Length - 1 : arrayPos - 1];
         return nearestCities;
-
-
     }
 
     public Town FindNearestTown(Vector3 pos, bool exclude)
@@ -291,6 +292,13 @@ public class Terrain : MonoBehaviour
                 if (c.gameObject.activeSelf)
                     c.Owner.AddResources(type - 1, 2);
         }
+    }
+
+    public void GiveInitialMaterials()
+    {
+        foreach (Town t in towns)
+            if (t.gameObject.activeSelf && t.TurnObtained == 1)//TODO: Colocar valor adecuado
+                t.Owner.AddResources(type - 1, 1);
     }
 
     void OnDisable()

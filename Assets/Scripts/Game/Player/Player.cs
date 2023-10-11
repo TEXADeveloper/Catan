@@ -8,11 +8,12 @@ public class Player
     private int[] resources;
     private int[] cards;
     private bool[] achievements;
-    public byte VictoryPoints;
+    public int VictoryPoints;
 
     public delegate void EventHandler();
     public event EventHandler ResourcesUpdated;
     public event EventHandler CardsUpdated;
+    public event EventHandler PointsUpdated;
 
     public void AddResources(int id, int amount)
     {
@@ -45,8 +46,25 @@ public class Player
 
     public Player()
     {
+        initializeArrays();
+    }
+
+    public Player(string name)
+    {
+        Name = name;
+        initializeArrays();
+    }
+
+    private void initializeArrays()
+    {
         resources = new int[5];
         cards = new int[5];
         achievements = new bool[2];
+    }
+
+    public void AddVictoryPoints(int amount)
+    {
+        VictoryPoints += amount;
+        PointsUpdated?.Invoke();
     }
 }

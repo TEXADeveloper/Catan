@@ -19,4 +19,27 @@ public class GameData : ScriptableObject
             Players.Add(p);
         }
     }
+
+    public void RemovePlayer(Player p)
+    {
+        if (Players.Contains(p))
+            Players.Remove(p);
+    }
+
+    public void RemovePlayer(string n)
+    {
+        foreach (Player p in Players)
+            if (p.Name == n)
+            {
+                Players.Remove(p);
+                return;
+            }
+    }
+
+    public Player GetPlayer(int i)
+    {
+        if (Players.Count > i)
+            return Players[i];
+        return null;
+    }
 }

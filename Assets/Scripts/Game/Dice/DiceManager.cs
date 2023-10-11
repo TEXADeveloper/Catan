@@ -1,11 +1,13 @@
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class DiceManager : MonoBehaviour
 {
     public static event Action<int> DiceResult;
 
+    [SerializeField] private Button throwButton;
     [SerializeField] private TMP_Text text;
     int[] dices = new int[2];
     int callCount = 0;
@@ -25,6 +27,24 @@ public class DiceManager : MonoBehaviour
         DiceResult?.Invoke(dices[0] + dices[1]);
     }
 
+    void Awake()
+    {
+        GameManager.ToggleDice += toggleDice;
+    }
+
+    private void toggleDice()
+    {
+        throwButton.interactable = !throwButton.interactable;
+    }
+
+    void OnDisable()
+    {
+        GameManager.ToggleDice -= toggleDice;
+    }
+
+
+
+    //TODO: NO OLVIDARSE DE ELIMINAR ESTO.
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))

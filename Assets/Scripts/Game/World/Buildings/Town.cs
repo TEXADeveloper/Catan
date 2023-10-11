@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Town : MonoBehaviour
 {
     public Player Owner;
+    public int TurnObtained;
     // clay, wood, ore, wool, wheat
     int[] price = { 1, 1, 0, 1, 1 };
     Terrain[] terrains = new Terrain[3];

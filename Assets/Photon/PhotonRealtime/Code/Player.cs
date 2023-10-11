@@ -14,7 +14,6 @@
 #define SUPPORTED_UNITY
 #endif
 
-
 namespace Photon.Realtime
 {
     using System;
@@ -22,13 +21,13 @@ namespace Photon.Realtime
     using System.Collections.Generic;
     using ExitGames.Client.Photon;
 
-    #if SUPPORTED_UNITY
+#if SUPPORTED_UNITY
     using UnityEngine;
-    #endif
-    #if SUPPORTED_UNITY || NETFX_CORE
+#endif
+#if SUPPORTED_UNITY || NETFX_CORE
     using Hashtable = ExitGames.Client.Photon.Hashtable;
     using SupportClass = ExitGames.Client.Photon.SupportClass;
-    #endif
+#endif
 
 
     /// <summary>
@@ -291,7 +290,7 @@ namespace Photon.Realtime
         /// </summary>
         public override string ToString()
         {
-            return string.Format("#{0:00} '{1}'",this.ActorNumber, this.NickName);
+            return string.Format("#{0:00} '{1}'", this.ActorNumber, this.NickName);
         }
 
         /// <summary>

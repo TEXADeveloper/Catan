@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
+using System.Collections;
 using PhotonPlayer = Photon.Realtime.Player;
-using System.Collections.Generic;
 
 
 public class ConnectionManager : MonoBehaviourPunCallbacks
@@ -12,8 +13,9 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     public static ConnectionManager CM;
     public static event Action<string, Color> ConnectionState;
     public static event Action<int, string, RoomActions> RoomError;
-    public static event Action EnterRoom;
+    public static event Action<PhotonPlayer[]> UpdateList;
 
+    [HideInInspector] public bool IsConnected = false;
     Player player;
 
     public Player GetPlayer()
@@ -21,12 +23,13 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
         return player;
     }
 
+    //! //FIXME: Error with singleton (both objects destroyed when going back to scene 0)
     void Awake()
     {
         if (CM == null)
             CM = this;
         else
-            Destroy(this);
+            Destroy(this.gameObject);
         DontDestroyOnLoad(CM);
     }
 
@@ -34,43 +37,52 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.GameVersion = Application.version;
         PhotonNetwork.AutomaticallySyncScene = true;
-        startConnection();
     }
 
-    private void startConnection()
+    public void StartConnection(Player p)
     {
+        player = p;
+        PhotonNetwork.AuthValues = new AuthenticationValues();
+        PhotonNetwork.AuthValues.UserId = player.Name;
         PhotonNetwork.ConnectUsingSettings();
-        ConnectionState?.Invoke("Connecting", Color.yellow);
+        SendConnectionState("Connecting", Color.yellow);
     }
 
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected");
-        ConnectionState?.Invoke("Connected", Color.green);
+        IsConnected = true;
+        SendConnectionState("Connected", Color.green);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.LogError("Desconectado debido a " + cause);
-        ConnectionState?.Invoke("Disconnected", Color.red);
+        IsConnected = true;
+        SendConnectionState("Disconnected", Color.red);
     }
 
-    public void CreateRoom(string roomName, Player p)
+    public void SendConnectionState(string state, Color color)
     {
-        player = p;
+        ConnectionState?.Invoke(state, color);
+    }
 
+    public void CreateRoom(string roomName)
+    {
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
         options.PlayerTtl = 60000;
         options.EmptyRoomTtl = 180000;
+        options.PublishUserId = true;
         PhotonNetwork.CreateRoom(roomName, options, TypedLobby.Default);
     }
 
-    public void JoinRoom(string roomName, Player p)
+    public void JoinRoom(string roomName)
     {
-        player = p;
-
         PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -85,41 +97,44 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        EnterRoom?.Invoke();
-        Debug.Log("se unió a la sala");
+        foreach (PhotonPlayer p in PhotonNetwork.PlayerList)
+            gameData.AddPlayer(new Player(p.UserId));
 
-        gameData.AddPlayer(player);
+        StartCoroutine(showList());
+    }
 
-        PhotonView PV = GetComponent<PhotonView>();
-        PV.RPC("addPlayer", RpcTarget.Others, player);
+    public override void OnPlayerEnteredRoom(PhotonPlayer photonPlayer)
+    {
+        gameData.AddPlayer(new Player(photonPlayer.UserId));
+        StartCoroutine(showList());
     }
 
     public override void OnPlayerLeftRoom(PhotonPlayer photonPlayer)
     {
-        //Eliminarlo de la lista
+        gameData.RemovePlayer(photonPlayer.UserId);
+        StartCoroutine(showList());
     }
 
-    [PunRPC]
-    private void addPlayer(Player p)
+    private IEnumerator showList()
     {
-        gameData.AddPlayer(p);
-
-        if (!PhotonNetwork.LocalPlayer.IsMasterClient)
-            return;
-
-        PhotonView PV = GetComponent<PhotonView>();
-        PV.RPC("setList", RpcTarget.Others, gameData.Players);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            AsyncOperation operation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+            yield return new WaitUntil(() => operation.isDone);
+        }
+        UpdateList?.Invoke(PhotonNetwork.PlayerList);
     }
 
-    [PunRPC]
-    private void setList(List<Player> playerList)
+    public override void OnLeftRoom()
     {
-        gameData.Players = playerList;
+        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
     }
+
 }
 
 public enum RoomActions
 {
+    Connect,
     Create,
     Join
 }

@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public enum BuildingType
 {
@@ -12,8 +14,11 @@ public enum BuildingType
 public class PlayerBuilding : MonoBehaviour
 {
     [SerializeField] private GameData gameData;
+    public static event Action PlayerBuilt;
 
     Vector2 mousePos = Vector2.zero;
+    [SerializeField] private Button buildingButton;
+    [SerializeField] private Animator cardAnimator;
     [SerializeField] private LayerMask terrainLayer;
     [SerializeField] private float maxDistance;
     [SerializeField] private float tapThreshold;
@@ -27,6 +32,7 @@ public class PlayerBuilding : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        GameManager.ToggleBuild += toggleButton;
     }
 
     public void SetBuildingType(int type)
@@ -53,7 +59,7 @@ public class PlayerBuilding : MonoBehaviour
             timeReleased = Time.time;
             if (timePressed != 0 && timeReleased != 0 && timeReleased - timePressed < tapThreshold)
             {
-                build();
+                build(); //TODO: Obtener turno
                 timePressed = 0;
                 timeReleased = 0;
             }
@@ -74,6 +80,19 @@ public class PlayerBuilding : MonoBehaviour
             if (BuildingType.town == type)
                 turn++;
             type = BuildingType.none;
+            PlayerBuilt?.Invoke();
         }
+    }
+
+    private void toggleButton()
+    {
+        if (buildingButton.interactable)
+            cardAnimator.SetTrigger("Out");
+        buildingButton.interactable = !buildingButton.interactable;
+    }
+
+    void OnDisable()
+    {
+        GameManager.ToggleBuild -= toggleButton;
     }
 }

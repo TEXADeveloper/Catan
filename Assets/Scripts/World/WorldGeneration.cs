@@ -9,7 +9,7 @@ public class WorldGeneration : MonoBehaviour
     [SerializeField] private GameObject terrainBase;
     [SerializeField] private GameObject[] terrainTypes;
     [SerializeField] private Transform emptyTerrainsParent;
-    private Terrain[] terrains;
+    [HideInInspector] public Terrain[] Terrains;
     private Terrain[] emptyTerrains;
 
     [SerializeField] private LayerMask terrainLayer;
@@ -26,7 +26,7 @@ public class WorldGeneration : MonoBehaviour
     {
         if (terrainOrder.Length == 0)
             return;
-        terrains = new Terrain[terrainOrder.Length];
+        Terrains = new Terrain[terrainOrder.Length];
         int index = 0;
         for (int y = 2; y >= -2; y--)
             if (y % 2 == 0)
@@ -55,7 +55,7 @@ public class WorldGeneration : MonoBehaviour
     private IEnumerator hideStructures()
     {
         yield return null;
-        foreach (Terrain t in terrains)
+        foreach (Terrain t in Terrains)
             t.HideBuildings();
         foreach (Terrain t in emptyTerrains)
             t.HideBuildings();
@@ -82,14 +82,14 @@ public class WorldGeneration : MonoBehaviour
         spawnedBase.transform.parent = this.transform;
         spawnedBase.name = "Terrain " + type + " " + position;
 
-        terrains[index] = spawnedBase.GetComponent<Terrain>();
-        terrains[index].SetType(type);
-        terrains[index].SetNumber(number);
+        Terrains[index] = spawnedBase.GetComponent<Terrain>();
+        Terrains[index].SetType(type);
+        Terrains[index].SetNumber(number);
     }
 
     private void initializeCircularLists()
     {
-        centerTerrain = terrains[9];
+        centerTerrain = Terrains[9];
         Collider[] intCols = Physics.OverlapSphere(centerTerrain.transform.position, distance.x, terrainLayer);
         foreach (Collider col in intCols)
             internalTerrains.Add(col.GetComponent<Terrain>());

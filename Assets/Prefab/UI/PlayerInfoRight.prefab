@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 107302163917036606}
   - component: {fileID: 8012832862053217690}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: KnightsUsed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6050316207045296463}
   - component: {fileID: 2747296643812891761}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: LongestRoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 8279152579387279797}
   - component: {fileID: 2999271785573900402}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: ProgressCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 1539964036493429186}
   - component: {fileID: 9140319355675003}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MaterialCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,6 +704,7 @@ GameObject:
   - component: {fileID: 613422869513409342}
   - component: {fileID: 5756263776431307993}
   - component: {fileID: 663545288404827031}
+  - component: {fileID: 5786927581021645093}
   m_Layer: 5
   m_Name: PlayerInfoRight
   m_TagString: Untagged
@@ -776,6 +777,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5786927581021645093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490218436183393015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ccd521f649a80c4f86c1c39beebd224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: ea7a84a1184cfdf4089905675f946c83, type: 2}
+  i: 0
+  playerName: {fileID: 5648391064772351609}
+  materialCards: {fileID: 9140319355675003}
+  progressCards: {fileID: 2999271785573900402}
+  longestRoad: {fileID: 2747296643812891761}
+  usedKnights: {fileID: 8012832862053217690}
+  victoryPoints: {fileID: 1373554103690689934}
 --- !u!1 &5847263849633668436
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +945,7 @@ GameObject:
   - component: {fileID: 6812353056713929398}
   - component: {fileID: 1373554103690689934}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: VictoryPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

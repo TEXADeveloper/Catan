@@ -1,26 +1,54 @@
+using TMPro;
 using UnityEngine;
-using Photon.Pun;
+using System.Collections.Generic;
 using Photon.Realtime;
 using PhotonPlayer = Photon.Realtime.Player;
+using Photon.Pun;
 
-public class PlayerList : MonoBehaviourPunCallbacks
+public class PlayerList : MonoBehaviour
 {
-    private void updateList()
+    [SerializeField] private GameObject playerDisplay;
+    [SerializeField] private Vector2 achorPosition;
+
+    private List<RectTransform> displays = new List<RectTransform>();
+
+    void Start()
     {
-        foreach (PhotonPlayer player in PhotonNetwork.PlayerList)
+        ConnectionManager.UpdateList += updateList;
+    }
+
+    private void updateList(PhotonPlayer[] players)
+    {
+        destroyDisplays();
+        foreach (PhotonPlayer p in players)
         {
-
+            GameObject go = Instantiate(playerDisplay, this.transform);
+            RectTransform rt = go.GetComponent<RectTransform>();
+            rt.anchorMax = achorPosition;
+            rt.anchorMin = achorPosition;
+            rt.anchoredPosition = new Vector2(0, -180 * displays.Count - 80);
+            TMP_Text txt = go.GetComponentInChildren<TMP_Text>();
+            if (txt != null)
+                txt.text = p.UserId;
+            displays.Add(rt);
         }
+
     }
 
-    public override void OnPlayerEnteredRoom(PhotonPlayer photonPlayer)
+    private void destroyDisplays()
     {
-        updateList();
+        foreach (RectTransform rt in displays)
+            Destroy(rt.gameObject);
+        displays.Clear();
     }
 
-    public override void OnPlayerLeftRoom(PhotonPlayer photonPlayer)
+    void OnDisable()
     {
-        updateList();
+        ConnectionManager.UpdateList -= updateList;
     }
 
+    public void LeaveRoom()
+    {
+        ConnectionManager.CM.LeaveRoom();
+    }
 }
